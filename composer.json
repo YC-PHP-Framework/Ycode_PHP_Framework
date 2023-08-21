@@ -1,9 +1,10 @@
 {
-    "name": "devone/php_mvc_framework",
-    "description": "PHP MVC Framework",
+    "name": "mhkif/yc_framework",
+    "description": "YC Framework It's A PHP MVC Framework",
     "autoload": {
+        "files": [ "./framework/Helpers.php"  ],
         "psr-4": {
-            "Main\\": "./"
+            "Yc\\": "./"
         }
     },
     "authors": [
@@ -12,6 +13,10 @@
         }
     ],
     "require": {
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.5",
+        "psr/container": "^2.0",
+        "doctrine/dbal": "^3.6",
+        "doctrine/orm": "^2.16",
+        "doctrine/migrations": "^3.6"
     }
 }

@@ -1,21 +1,23 @@
 <?php
 
-use Main\app\Application;
+return [
+    'table_storage' => [
+        'table_name' => 'doctrine_migration_versions',
+        'version_column_name' => 'version',
+        'version_column_length' => 191,
+        'executed_at_column_name' => 'executed_at',
+        'execution_time_column_name' => 'execution_time',
+    ],
 
-require_once __DIR__ . '/vendor/autoload.php';
+    'migrations_paths' => [
+        'Migrations' => '/migrations',
+        'MyProject\Component\Migrations' => './Component/MyProject/Migrations',
+    ],
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
-
-$config = [
-    'db' => [
-        'dsn' => $_ENV['DB_DSN'],
-        'user' => $_ENV['DB_USER'],
-        'password' => $_ENV['DB_PASSWORD']
-    ]
+    'all_or_nothing' => true,
+    'transactional' => true,
+    'check_database_platform' => true,
+    'organize_migrations' => 'none',
+    'connection' => null,
+    'em' => null,
 ];
-
-$app = new Application(__DIR__, $config);
-
-$app->db->applyMigrations();
