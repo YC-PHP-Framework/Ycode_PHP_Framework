@@ -12,12 +12,27 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
+        
+        $data = $request->all();
+        $validator = new Validator($data);
+
+        $validator->rules('required', ['email', 'password']);
+        $validator->rules('email', 'email');
+        $validator->rules('min', 'password', 8);
+
+        if ($validator->validated()) {
+            redirect('/');
+        }
+
+
+        return $this->view('auth/login', [
+            'validator' => $validator,
+
+        ]);
     }
 
     public function register(Request $request)
     {
-
-        // print_r($request->all());
 
         $data = $request->all();
         $validator = new Validator($data);

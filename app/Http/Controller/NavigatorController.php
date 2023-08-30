@@ -18,8 +18,8 @@ class NavigatorController extends Controller
         // var_dump($db1); 
         // $users = App::DB()->query("SELECT * FROM users ")->getAll();
         // dd($users);
-        $test =  $this->container->get(TestService::class)->add();
-        dd($test);
+        // $test =  $this->container->get(TestService::class)->add();
+        // dd($test);
 
         // dd($this->get_request('arg'));
 

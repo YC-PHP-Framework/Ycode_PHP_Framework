@@ -24,7 +24,6 @@ class Router extends Renderable
     {
         self::$routes[self::METHOD_GET][$path] = $controller;
         if (!is_callable($controller)) {
-
             return (new Router(self::METHOD_GET, $path));
         }
     }
@@ -70,7 +69,6 @@ class Router extends Renderable
             Response::httpStatusCode(Response::HTTP_NOT_FOUND);
             return abort(Response::HTTP_NOT_FOUND, $path);
         }
-        // dd($controller);
 
         if (is_array($controller)) {
             // EX : [0]=> "Main\app\Http\Controllers\NavigatorController" [1]=> "index" 

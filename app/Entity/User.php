@@ -5,7 +5,7 @@ namespace Yc\App\Entity;
 use Yc\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-// #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Entity, ORM\Table(name: 'users')]
 class User
 {

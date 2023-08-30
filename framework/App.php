@@ -24,6 +24,7 @@ class App
     {
         return static::$DB;
     }
+    
     public function getContainer()
     {
         return $this->container;

@@ -28,13 +28,13 @@
                                 <div class="flex flex-col space-y-2 text-left">
                                     <div class="flex flex-col gap-2">
                                         <label class="font-medium  text-white text-[14px] xxl:text-lg">Email</label>
-                                        <input type="text" name="email" placeholder="email@example.com" value="<?php echo $auth->email ?? "" ?>" class="border rounded p-2 bg-black <?php echo isset($auth) &&  $auth->hasError('email') ?  "border-red-600 hover:border-red-600" : "border-gray-600 hover:border-orange-600" ?>  placeholder-white-500 text-white  ">
-                                        <small class="text-red-600"> <?php echo isset($auth) ? $auth->getFirstError('email') : "" ?> </small>
+                                        <input type="text" name="email" placeholder="email@example.com" value="<?= $validator?->data['email'] ??  "" ?>" class="border rounded p-2 bg-black <?php echo isset($auth) &&  $auth->hasError('email') ?  "border-red-600 hover:border-red-600" : "border-gray-600 hover:border-orange-600" ?>  placeholder-white-500 text-white  ">
+                                        <small class="text-red-600"> <?= $validator?->getError('email') ??  ""  ?></small>
                                     </div>
                                     <div class="flex flex-col gap-2">
                                         <label class="font-medium  text-white text-[14px] xxl:text-lg">Password</label>
-                                        <input type="password" name="password" placeholder="*****" value="<?php echo $auth->password ?? "" ?>" class="border rounded p-2  bg-black <?php echo isset($auth) &&  $auth->hasError('password') ?  "border-red-600 hover:border-red-600" : "border-gray-600 hover:border-orange-600" ?>  placeholder-white-500 text-white ">
-                                        <small class="text-red-600"> <?php echo isset($auth) ? $auth->getFirstError('password') : "" ?> </small>
+                                        <input type="password" name="password" placeholder="*****" value="<?= $validator?->data['password']  ?? "" ?>" class="border rounded p-2  bg-black <?php echo isset($auth) &&  $auth->hasError('password') ?  "border-red-600 hover:border-red-600" : "border-gray-600 hover:border-orange-600" ?>  placeholder-white-500 text-white ">
+                                        <small class="text-red-600"> <?= $validator?->getError('password') ??  ""  ?> </small>
                                     </div>
                                 </div>
                                 <button type="submit" class="border border-orange-600 bg-black text-white rounded py-3 font-semibold hover:border-gray-900 hover:bg-orange-600">Login</button>

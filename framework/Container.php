@@ -41,12 +41,11 @@ class Container extends ContainerWriter implements ContainerInterface
     // Autowiring using Reflection Api
     public function resolve(string $id)
     {
-        dd($id);
+        // dd($id);
         // 1. Inspect the class that we are trying to get from the container
         $reflectionClass = new \ReflectionClass($id);
 
         if (!$reflectionClass->isInstantiable()) {
-
             throw new ContainerException("Class {$id} is not instantiable");
         }
 
@@ -67,7 +66,7 @@ class Container extends ContainerWriter implements ContainerInterface
 
             // Check Type Hinting 
             if (!$type) {
-                dd("type");
+                // dd("type");
                 throw new ContainerException(
                     "Failed to resolve class {$id} because parameter {$name} is missing a type hint ."
                 );

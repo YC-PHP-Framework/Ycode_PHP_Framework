@@ -9,7 +9,7 @@ use Yc\app\Http\Controller\NavigatorController;
 
 Router::get('/', [NavigatorController::class, 'index']);
 Router::get('/login', [NavigatorController::class, 'login']);
-Router::post('/login', [AuthController::class, 'login'])->middleware('test');
+Router::post('/login', [AuthController::class, 'login']);
 Router::get('/register', [NavigatorController::class, 'register']);
 Router::post('/register', [AuthController::class, 'register']);
 Router::get('/hello', function () {
