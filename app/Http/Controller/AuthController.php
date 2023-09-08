@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        
+
         $data = $request->all();
         $validator = new Validator($data);
 
@@ -42,6 +42,7 @@ class AuthController extends Controller
         $validator->rules('min', 'password', 8);
         $validator->rules('max', 'password', 24);
         $validator->rules('match', 'confirm_password', 'password');
+       
 
         if ($validator->validated()) {
 

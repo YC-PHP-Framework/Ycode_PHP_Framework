@@ -17,6 +17,7 @@ class Configure
                 'driver' => $env['DB_DRIVER'] ?? 'pdo_mysql'
 
             ]
+            
 
         ];
     }

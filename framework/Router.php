@@ -67,6 +67,7 @@ class Router extends Renderable
 
         if (!$controller) { // $controller === false
             Response::httpStatusCode(Response::HTTP_NOT_FOUND);
+            
             return abort(Response::HTTP_NOT_FOUND, $path);
         }
 

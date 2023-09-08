@@ -82,9 +82,7 @@ class Validator
     public function validated()
     {
         foreach ($this->validatedFileds as $key => $fields) {
-            // echo $key  . "=>";
-            // var_dump($fields);
-            // echo '</br>';
+           
 
             foreach ($fields as $field) {
                 if (is_array($field)) {

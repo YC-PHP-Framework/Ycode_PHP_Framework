@@ -11,6 +11,7 @@ class User
 {
     
     #[ORM\Id, ORM\Column(options: ['unsigned' => true]), ORM\GeneratedValue]
+ 
     private ?int $id;
 
     #[ORM\Column]
