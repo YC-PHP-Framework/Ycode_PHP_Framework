@@ -7,18 +7,22 @@ class TestService
 {
 
     public function __construct(
-        protected SayService $sayHi,
+        protected PrintName $printName,
         protected CalculServiceInterface $calulOperation
     ) {
     }
 
-    public function sayHiTo(string $name)
+    public function print(string $name)
     {
-        return $this->sayHi->say($name);
+        return $this->printName->print($name);
     }
 
+    public function sub()
+    {
+        return $this->calulOperation->calcul(10, 8);
+    }
     public function add()
     {
-        return $this->calulOperation->calcul(5, 8);
+        return $this->calulOperation->calcul(10, 8);
     }
 }

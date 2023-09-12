@@ -1,0 +1,1 @@
+<h1>Hello <span class="text-orange-600 "><?php echo $name ?> </span></h1>

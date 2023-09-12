@@ -12,6 +12,7 @@ Router::get('/login', [NavigatorController::class, 'login']);
 Router::post('/login', [AuthController::class, 'login']);
 Router::get('/register', [NavigatorController::class, 'register']);
 Router::post('/register', [AuthController::class, 'register']);
-Router::get('/hello', function () {
-    return ' Hello ';
-}); 
+Router::get('/profile', [NavigatorController::class, 'profile']);
+Router::get('/router', function () {
+    return ' Hello Your Router works perfectely';
+});

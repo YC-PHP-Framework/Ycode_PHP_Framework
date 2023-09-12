@@ -2,9 +2,9 @@
 namespace Yc\App\Service;
 
 
-class SayService {
+class PrintName {
 
-    public function say(string $name){
-        return "Hi {$name}" . " From ". __CLASS__;
+    public function print(string $name){
+        return "Hi {$name}" ;
     }
 }

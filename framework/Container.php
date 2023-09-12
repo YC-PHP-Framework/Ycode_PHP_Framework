@@ -5,18 +5,25 @@ namespace Yc\framework;
 use ReflectionNamedType;
 use ReflectionParameter;
 use ReflectionUnionType;
-use Yc\framework\ContainerWriter;
 use Psr\Container\ContainerInterface;
 use Yc\App\Exceptions\ContainerException;
 
-class Container extends ContainerWriter implements ContainerInterface
+// If You do not import the class the interfaces and classes will not be recognized
+use Yc\App\Service\CalculServiceInterface;
+use Yc\App\Service\AdditionOpService;
+use Yc\App\Service\SubstractionOpService;
+
+class Container  implements ContainerInterface
 {
 
-
+    public array $entries = [
+        CalculServiceInterface::class => AdditionOpService::class,
+    ];
 
     public function get(string $id)
     {
-        // dd($id);
+
+
         if ($this->has($id)) {
             $entry =  $this->entries[$id];
             if (is_callable($entry)) {
@@ -41,7 +48,7 @@ class Container extends ContainerWriter implements ContainerInterface
     // Autowiring using Reflection Api
     public function resolve(string $id)
     {
-        // dd($id);
+
         // 1. Inspect the class that we are trying to get from the container
         $reflectionClass = new \ReflectionClass($id);
 

@@ -5,31 +5,29 @@ namespace Yc\App\Http\Controller;
 use Yc\framework\App;
 use Yc\framework\Controller;
 use Yc\App\Service\TestService;
+use Yc\framework\Renderable;
 
 // use Main\app\Renderable;
 
 class NavigatorController extends Controller
 {
+
+
     public function index()
     {
 
-
-
-        // var_dump($db1); 
-        // $users = App::DB()->query("SELECT * FROM users ")->getAll();
-        // dd($users);
-        // $test =  $this->container->get(TestService::class)->add();
-        // dd($test);
-
-        // dd($this->get_request('arg'));
+        $add =  $this->container->get(TestService::class)->sub();
+        // dd($add);
 
         $params = [
-            'name' => "Abdelmalek Achkif"
+            'name' => "Abdelmalek Achkif",
+
         ];
 
-        // return Renderable::view('home', $params);
-        return $this->view('home', $params);
+        return Renderable::view('home', $params);
+        // return $this->view('home', $params);
     }
+
     public function login()
     {
         return $this->view('auth/login');
@@ -38,5 +36,14 @@ class NavigatorController extends Controller
     public function register()
     {
         return $this->view('auth/register');
+    }
+
+    public function profile()
+    {
+        $params = [
+            'name' => "Abdelmalek Achkif",
+
+        ];
+        return Renderable::view('profile', $params);
     }
 }
