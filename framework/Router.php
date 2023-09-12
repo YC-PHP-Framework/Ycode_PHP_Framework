@@ -6,9 +6,6 @@ namespace Yc\framework;
 class Router extends Renderable
 {
 
-    public function __construct(private ?string $method = null, private ?string $path = null)
-    {
-    }
 
     private static $routes = [];
 
@@ -23,22 +20,11 @@ class Router extends Renderable
     public static function get(string $path, array|callable $controller)
     {
         self::$routes[self::METHOD_GET][$path] = $controller;
-        if (!is_callable($controller)) {
-            return (new Router(self::METHOD_GET, $path));
-        }
-    }
-    public function middleware($name)
-    {
-        self::$routes[$this->method][$this->path]["middleware"] = $name;
     }
 
     public static function post(string $path, array|callable  $controller)
     {
         self::$routes[self::METHOD_POST][$path] = $controller;
-        if (!is_callable($controller)) {
-
-            return (new Router(self::METHOD_POST, $path));
-        }
     }
 
     public static function put(string $path, array|callable  $controller)
@@ -67,7 +53,7 @@ class Router extends Renderable
 
         if (!$controller) { // $controller === false
             Response::httpStatusCode(Response::HTTP_NOT_FOUND);
-            
+
             return abort(Response::HTTP_NOT_FOUND, $path);
         }
 

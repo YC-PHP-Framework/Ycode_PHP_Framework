@@ -2,6 +2,8 @@
 
 namespace Yc\framework\Middlware;
 
-class Middleware
+abstract class Middleware
 {
+
+    abstract public function execute();
 }
