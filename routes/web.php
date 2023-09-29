@@ -7,12 +7,13 @@ use Yc\app\Http\Controller\NavigatorController;
 // #Note : 
 // If you call any Route::method outside of the routes/web.php file it is not going to work .
 
-Router::get('/', [NavigatorController::class, 'index']);
+Router::get('/', [NavigatorController::class, 'index'], ["guest", "auth"]);
 Router::get('/login', [NavigatorController::class, 'login']);
 Router::post('/login', [AuthController::class, 'login']);
 Router::get('/register', [NavigatorController::class, 'register']);
 Router::post('/register', [AuthController::class, 'register']);
-Router::get('/profile', [NavigatorController::class, 'profile']);
+Router::get('/profile', [NavigatorController::class, 'profile'], "auth");
+
 Router::get('/router', function () {
-    return ' Hello Your Router works perfectely';
-});
+    echo  ' Hello Your Router works perfectely';
+}, "guest");

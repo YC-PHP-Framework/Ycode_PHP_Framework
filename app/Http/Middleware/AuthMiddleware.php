@@ -3,24 +3,17 @@
 namespace Yc\App\Http\Middleware;
 
 use Yc\App\Exceptions\ForbiddenException;
-use Yc\framework\App;
-use Yc\framework\Middlware\Middleware;
+use Yc\framework\Middleware;
 
 class AuthMiddleware extends Middleware
 {
-    public array $middlewares = [];
 
-    public function __construct(array $middlewares = [])
+    public function handle()
     {
-        $this->middlewares = $middlewares;
-    }
-    public function execute()
-    {
-        if (true) {
-            if (empty($this->middlewares)) {
-
-                throw new ForbiddenException();
-            }
+        if (!isset($_SESSION['user'])) {
+            redirect("/login");
+        } else {
+            throw new ForbiddenException();
         }
     }
 }

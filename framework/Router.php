@@ -2,10 +2,10 @@
 
 namespace Yc\framework;
 
+use Yc\framework\Middleware;
 
-class Router extends Renderable
+class Router 
 {
-
 
     private static $routes = [];
 
@@ -16,15 +16,30 @@ class Router extends Renderable
     private const METHOD_DELETE = "DELETE";
 
 
-
-    public static function get(string $path, array|callable $controller)
+    private static function middleware(string $method, string $path, $middlewares = null)
     {
-        self::$routes[self::METHOD_GET][$path] = $controller;
+        if (isset($middlewares)) {
+            self::$routes[$method]["middlewares"][] =
+                [
+                    "action" => $middlewares,
+                    "method" => self::METHOD_GET,
+                    "path" => $path
+                ];
+        }
     }
 
-    public static function post(string $path, array|callable  $controller)
+    public static function get(string $path, array|callable $controller, array|string  $middlewares = null)
+    {
+        self::$routes[self::METHOD_GET][$path] = $controller;
+        self::middleware(self::METHOD_GET, $path, $middlewares);
+    }
+
+
+
+    public static function post(string $path, array|callable  $controller, array|string  $middlewares = null)
     {
         self::$routes[self::METHOD_POST][$path] = $controller;
+        self::middleware(self::METHOD_POST, $path, $middlewares);
     }
 
     public static function put(string $path, array|callable  $controller)
@@ -50,22 +65,35 @@ class Router extends Renderable
         $path = Request::get_path();
         $method = Request::get_method();
         $controller = self::$routes[$method][$path] ?? false;
+        $middlewares = self::$routes[$method]["middlewares"] ?? false;
 
-        if (!$controller) { // $controller === false
+        if (!$controller) {
             Response::httpStatusCode(Response::HTTP_NOT_FOUND);
-
             return abort(Response::HTTP_NOT_FOUND, $path);
-        }
+        } else {
 
-        if (is_array($controller)) {
-            // EX : [0]=> "Main\app\Http\Controllers\NavigatorController" [1]=> "index" 
-            // $site = new NavigatorController();
-            // dd($controller);
-            // $controller[0] = new $controller[0]();
-            $controller[0] = (new Container())->get($controller[0]);
-        }
+            if ($middlewares) {
+                foreach ($middlewares as $middleware) {
+                    if ($middleware["path"]  ===  $path) {
+                        if(is_array($middleware["action"])){
+                            foreach($middleware["action"] as $action){
+                                    $handler = (new Container())->get(Middleware::middlewares[$action]);
+                                    $handler->handle();
+                            }
+                        }else{
+                            $handler = (new Container())->get(Middleware::middlewares[$middleware["action"]]);
+                            $handler->handle();
+                        }
+                    }
+                }
+            }
 
-        // if there is any args , We are passing it  by the Request Class 
-        return call_user_func($controller, new Request());
+            if (is_array($controller)) {
+                $controller[0] = (new Container())->get($controller[0]);
+            }
+
+            // if there is any args , We are passing it  by the Request Class 
+            return call_user_func($controller, new Request());
+        }
     }
 }

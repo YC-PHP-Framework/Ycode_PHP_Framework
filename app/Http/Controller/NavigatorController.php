@@ -6,6 +6,7 @@ use Yc\framework\App;
 use Yc\framework\Controller;
 use Yc\App\Service\TestService;
 use Yc\framework\Renderable;
+use Yc\framework\Router;
 
 // use Main\app\Renderable;
 
@@ -13,19 +14,19 @@ class NavigatorController extends Controller
 {
 
 
+
     public function index()
     {
 
         $add =  $this->container->get(TestService::class)->sub();
-        // dd($add);
-
+    
         $params = [
             'name' => "Abdelmalek Achkif",
 
         ];
 
-        return Renderable::view('home', $params);
-        // return $this->view('home', $params);
+        // return Renderable::view('home', $params);
+        return $this->view('home', $params);
     }
 
     public function login()

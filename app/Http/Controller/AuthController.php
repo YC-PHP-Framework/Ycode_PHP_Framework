@@ -5,8 +5,7 @@ namespace Yc\App\Http\Controller;
 use Yc\framework\Controller;
 use Yc\framework\Request;
 use Yc\framework\Validator;
-use Yc\models\User;
-use Yc\models\AuthModel;
+
 
 class AuthController extends Controller
 {
@@ -19,6 +18,7 @@ class AuthController extends Controller
         $validator->rules('required', ['email', 'password']);
         $validator->rules('email', 'email');
         $validator->rules('min', 'password', 8);
+       
 
         if ($validator->validated()) {
             redirect('/');
