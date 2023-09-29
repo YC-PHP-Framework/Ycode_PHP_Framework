@@ -23,11 +23,23 @@ function redirect($route)
 }
 
 
-function dd($data)
+function dd(mixed $data = null)
 {
-    echo "<pre>";
-    var_dump($data);
-    echo "</pre>";
+  
+        if (is_array($data)) {
+            foreach ($data as $ele) {
+                echo "<pre>";
+                var_dump($ele);
+                echo "</pre>";
+                echo "</br>";
+            }
+        } else {
+            echo "<pre>";
+            var_dump($data);
+            echo "</pre>";
+        }
+    
+
 
     exit;
 }
