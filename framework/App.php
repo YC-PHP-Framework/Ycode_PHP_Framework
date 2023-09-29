@@ -12,7 +12,7 @@ class App
     private static Database $DB;
     // private Container $container;
 
-    private function __construct()
+    public function __construct()
     {
         self::$instance = $this;
         $this->router = new Router();
@@ -29,7 +29,7 @@ class App
     // {
     //     return $this->container;
     // }
-   
+
 
     public function run()
     {
