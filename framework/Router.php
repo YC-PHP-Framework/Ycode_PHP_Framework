@@ -16,7 +16,7 @@ class Router
     private const METHOD_DELETE = "DELETE";
 
 
-    private static function middleware(string $method, string $path, $middlewares = null)
+    private static function middleware(string $method, string $path, array|string $middlewares = null)
     {
         if (isset($middlewares)) {
             self::$routes[$method]["middlewares"][] =

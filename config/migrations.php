@@ -10,8 +10,8 @@ return [
     ],
 
     'migrations_paths' => [
-        'Migrations' => '/migrations',
-        'MyProject\Component\Migrations' => './Component/MyProject/Migrations',
+        'Migrations' => '/../migrations',
+        // 'MyProject\Component\Migrations' => './Component/MyProject/Migrations',
     ],
 
     'all_or_nothing' => true,

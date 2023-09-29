@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'mhkif/yc_framework',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => '6352f35f5514bc92b00132ee06bcab9f7a905fa8',
+        'pretty_version' => 'dev-develop',
+        'version' => 'dev-develop',
+        'reference' => '6568bb9891da53aef51adb3274578576d12dd277',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -137,9 +137,9 @@
             'dev_requirement' => false,
         ),
         'mhkif/yc_framework' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '6352f35f5514bc92b00132ee06bcab9f7a905fa8',
+            'pretty_version' => 'dev-develop',
+            'version' => 'dev-develop',
+            'reference' => '6568bb9891da53aef51adb3274578576d12dd277',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -248,9 +248,9 @@
             ),
         ),
         'symfony/console' => array(
-            'pretty_version' => 'v6.3.2',
-            'version' => '6.3.2.0',
-            'reference' => 'aa5d64ad3f63f2e48964fc81ee45cb318a723898',
+            'pretty_version' => 'v6.3.4',
+            'version' => '6.3.4.0',
+            'reference' => 'eca495f2ee845130855ddf1cf18460c38966c8b6',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/console',
             'aliases' => array(),

@@ -1,0 +1,71 @@
+<?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+
+use function DI\create;
+use Doctrine\ORM\ORMSetup;
+use Yc\framework\Configure;
+
+use Yc\framework\Container;
+use Doctrine\ORM\EntityManager;
+use DI\Container as DIContainer;
+use Doctrine\Migrations\Configuration\EntityManager\ExistingEntityManager;
+use Doctrine\Migrations\Configuration\Migration\PhpFile;
+use Doctrine\Migrations\DependencyFactory;
+use Doctrine\ORM\Tools\Console\ConsoleRunner;
+
+use Doctrine\Migrations\Tools\Console\Command\DiffCommand;
+use Doctrine\Migrations\Tools\Console\Command\ListCommand;
+use Doctrine\Migrations\Tools\Console\Command\LatestCommand;
+use Doctrine\Migrations\Tools\Console\Command\RollupCommand;
+use Doctrine\Migrations\Tools\Console\Command\StatusCommand;
+use Doctrine\Migrations\Tools\Console\Command\CurrentCommand;
+use Doctrine\Migrations\Tools\Console\Command\ExecuteCommand;
+use Doctrine\Migrations\Tools\Console\Command\MigrateCommand;
+use Doctrine\Migrations\Tools\Console\Command\VersionCommand;
+use Doctrine\Migrations\Tools\Console\Command\GenerateCommand;
+use Doctrine\Migrations\Tools\Console\Command\UpToDateCommand;
+use Doctrine\Migrations\Tools\Console\Command\DumpSchemaCommand;
+use Doctrine\Migrations\Tools\Console\Command\SyncMetadataCommand;
+use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
+use Symfony\Component\Console\Application;
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+// $container = new Container();
+$container = new DIContainer();
+$container->set(Configure::class, create(Configure::class)->constructor($_ENV));
+$container->set(EntityManager::class, fn (Configure $config) => EntityManager::create(
+    $config->db,
+    ORMSetup::createAttributeMetadataConfiguration([__DIR__ . '/app/Entity'])
+));
+
+$entityManager = $container->get(EntityManager::class);
+
+$config = new PhpFile(__DIR__ . '/config/migrations.php'); 
+$dependencyFactory =  DependencyFactory::fromEntityManager($config, new ExistingEntityManager($entityManager));
+
+$commands = [
+    new CurrentCommand($dependencyFactory),
+    new DumpSchemaCommand($dependencyFactory),
+    new ExecuteCommand($dependencyFactory),
+    new GenerateCommand($dependencyFactory),
+    new LatestCommand($dependencyFactory),
+    new MigrateCommand($dependencyFactory),
+    new RollupCommand($dependencyFactory),
+    new StatusCommand($dependencyFactory),
+    new VersionCommand($dependencyFactory),
+    new UpToDateCommand($dependencyFactory),
+    new SyncMetadataCommand($dependencyFactory),
+    new ListCommand($dependencyFactory),
+    new DiffCommand($dependencyFactory)
+];
+
+
+
+$application = new Application(" Yc framework", "1.0 (BETA)");
+ConsoleRunner::addCommands($application,  new SingleManagerProvider($entityManager));
+$application->addCommands($commands);
+$application->run();
