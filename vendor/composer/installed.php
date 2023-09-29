@@ -3,7 +3,7 @@
         'name' => 'mhkif/yc_framework',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '6f0dacd505a40f29df905866aecbd1ac4d2c5696',
+        'reference' => '6352f35f5514bc92b00132ee06bcab9f7a905fa8',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -127,12 +127,39 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'laravel/serializable-closure' => array(
+            'pretty_version' => 'v1.3.1',
+            'version' => '1.3.1.0',
+            'reference' => 'e5a3057a5591e1cfe8183034b0203921abe2c902',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel/serializable-closure',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'mhkif/yc_framework' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '6f0dacd505a40f29df905866aecbd1ac4d2c5696',
+            'reference' => '6352f35f5514bc92b00132ee06bcab9f7a905fa8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'php-di/invoker' => array(
+            'pretty_version' => '2.3.4',
+            'version' => '2.3.4.0',
+            'reference' => '33234b32dafa8eb69202f950a1fc92055ed76a86',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-di/invoker',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'php-di/php-di' => array(
+            'pretty_version' => '7.0.5',
+            'version' => '7.0.5.0',
+            'reference' => '9ea40a5a6970bf1ca5cbe148bc16cbad6ca3db6c',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-di/php-di',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -154,6 +181,12 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'psr/cache-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '2.0|3.0',
+            ),
+        ),
         'psr/container' => array(
             'pretty_version' => '2.0.2',
             'version' => '2.0.2.0',
@@ -162,6 +195,12 @@
             'install_path' => __DIR__ . '/../psr/container',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'psr/container-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '^1.0',
+            ),
         ),
         'psr/log' => array(
             'pretty_version' => '3.0.0',
@@ -176,6 +215,36 @@
             'dev_requirement' => false,
             'provided' => array(
                 0 => '1.0|2.0|3.0',
+            ),
+        ),
+        'psr/simple-cache-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.0|2.0|3.0',
+            ),
+        ),
+        'symfony/cache' => array(
+            'pretty_version' => 'v6.3.4',
+            'version' => '6.3.4.0',
+            'reference' => 'e60d00b4f633efa4c1ef54e77c12762d9073e7b3',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/cache',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfony/cache-contracts' => array(
+            'pretty_version' => 'v3.3.0',
+            'version' => '3.3.0.0',
+            'reference' => 'ad945640ccc0ae6e208bcea7d7de4b39b569896b',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/cache-contracts',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfony/cache-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '1.1|2.0|3.0',
             ),
         ),
         'symfony/console' => array(

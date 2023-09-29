@@ -15,6 +15,7 @@ class ComposerStaticInit0f1a3b28624ad8c7b6fe972ef6a7c48e
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
+        'b33e3d135e5d9e47d845c576147bda89' => __DIR__ . '/..' . '/php-di/php-di/src/functions.php',
         'ef655e16f74243515cd3704d7ead80c9' => __DIR__ . '/../..' . '/framework/Helpers.php',
     );
 
@@ -32,10 +33,12 @@ class ComposerStaticInit0f1a3b28624ad8c7b6fe972ef6a7c48e
             'Symfony\\Polyfill\\Intl\\Grapheme\\' => 31,
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Contracts\\Service\\' => 26,
+            'Symfony\\Contracts\\Cache\\' => 24,
             'Symfony\\Component\\VarExporter\\' => 30,
             'Symfony\\Component\\String\\' => 25,
             'Symfony\\Component\\Stopwatch\\' => 28,
             'Symfony\\Component\\Console\\' => 26,
+            'Symfony\\Component\\Cache\\' => 24,
         ),
         'P' => 
         array (
@@ -43,6 +46,14 @@ class ComposerStaticInit0f1a3b28624ad8c7b6fe972ef6a7c48e
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
             'PhpOption\\' => 10,
+        ),
+        'L' => 
+        array (
+            'Laravel\\SerializableClosure\\' => 28,
+        ),
+        'I' => 
+        array (
+            'Invoker\\' => 8,
         ),
         'G' => 
         array (
@@ -62,6 +73,7 @@ class ComposerStaticInit0f1a3b28624ad8c7b6fe972ef6a7c48e
             'Doctrine\\Common\\Collections\\' => 28,
             'Doctrine\\Common\\Cache\\' => 22,
             'Doctrine\\Common\\' => 16,
+            'DI\\' => 3,
         ),
     );
 
@@ -98,6 +110,10 @@ class ComposerStaticInit0f1a3b28624ad8c7b6fe972ef6a7c48e
         array (
             0 => __DIR__ . '/..' . '/symfony/service-contracts',
         ),
+        'Symfony\\Contracts\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/cache-contracts',
+        ),
         'Symfony\\Component\\VarExporter\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/var-exporter',
@@ -114,6 +130,10 @@ class ComposerStaticInit0f1a3b28624ad8c7b6fe972ef6a7c48e
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Symfony\\Component\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/cache',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
@@ -129,6 +149,14 @@ class ComposerStaticInit0f1a3b28624ad8c7b6fe972ef6a7c48e
         'PhpOption\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
+        ),
+        'Laravel\\SerializableClosure\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/serializable-closure/src',
+        ),
+        'Invoker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-di/invoker/src',
         ),
         'GrahamCampbell\\ResultType\\' => 
         array (
@@ -183,6 +211,10 @@ class ComposerStaticInit0f1a3b28624ad8c7b6fe972ef6a7c48e
             0 => __DIR__ . '/..' . '/doctrine/common/src',
             1 => __DIR__ . '/..' . '/doctrine/event-manager/src',
         ),
+        'DI\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-di/php-di/src',
+        ),
     );
 
     public static $classMap = array (
@@ -193,6 +225,7 @@ class ComposerStaticInit0f1a3b28624ad8c7b6fe972ef6a7c48e
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
+        '©' => __DIR__ . '/..' . '/symfony/cache/Traits/ValueWrapper.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
