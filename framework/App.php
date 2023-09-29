@@ -5,9 +5,6 @@ namespace Yc\framework;
 use Yc\App\Service\CalculServiceInterface;
 use Yc\App\Service\SubstractionOpService;
 
-// I am using 'DI' dependency injenction to pass the 
-// [ 'database connection ', 'Router' ] through the Application construction
-
 class App
 {
     public static App $instance;
@@ -15,7 +12,7 @@ class App
     private static Database $DB;
     // private Container $container;
 
-    public function __construct()
+    private function __construct()
     {
         self::$instance = $this;
         $this->router = new Router();

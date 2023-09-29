@@ -11,18 +11,19 @@ use Yc\App\Exceptions\ContainerException;
 // If You do not import the class the interfaces and classes will not be recognized
 use Yc\App\Service\CalculServiceInterface;
 use Yc\App\Service\AdditionOpService;
-use Yc\App\Service\SubstractionOpService;
+// use Yc\App\Http\Middleware\AuthMiddleware;
+
 
 class Container  implements ContainerInterface
 {
 
     public array $entries = [
         CalculServiceInterface::class => AdditionOpService::class,
+        // AuthMiddleware::class => AuthMiddleware::class
     ];
 
     public function get(string $id)
     {
-
 
         if ($this->has($id)) {
             $entry =  $this->entries[$id];
@@ -32,6 +33,8 @@ class Container  implements ContainerInterface
 
             $id = $entry;
         }
+
+        
 
         return $this->resolve($id);
     }

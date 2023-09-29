@@ -15,10 +15,7 @@ class Configure
                 'password' => $env['DB_PASSWORD'],
                 'host' => $env["DB_HOST"],
                 'driver' => $env['DB_DRIVER'] ?? 'pdo_mysql'
-
             ]
-            
-
         ];
     }
 

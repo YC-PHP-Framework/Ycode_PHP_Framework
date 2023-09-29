@@ -109,7 +109,7 @@ class Database
     {
         $statement = $this->connection->prepare("SELECT migration FROM migrations");
         $statement->execute();
-        return $statement->fetchAll(\PDO::FETCH_COLUMN);
+        // return $statement->fetchAll(\PDO::FETCH_COLUMN);
     }
 
     public function saveMigrations(array $migrations)

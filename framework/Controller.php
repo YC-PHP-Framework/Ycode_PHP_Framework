@@ -3,7 +3,7 @@
 namespace Yc\framework;
 
 use BadMethodCallException;
-use Yc\framework\Middlware\Middleware;
+use Yc\framework\Middleware;
 
 class Controller extends Renderable
 {
@@ -23,16 +23,18 @@ class Controller extends Renderable
      */
     protected array $middlewares = [];
 
-   
+
 
     public function __call($method, $parameters)
     {
         throw new BadMethodCallException(sprintf(
-            'Method %s::%s does not exist.', static::class, $method
+            'Method %s::%s does not exist.',
+            static::class,
+            $method
         ));
     }
 
-   
+
     public function get_request(string $key)
     {
         if (isset(Request::all()[$key])) {
@@ -43,7 +45,8 @@ class Controller extends Renderable
         }
     }
 
-    public function registerMiddleware(Middleware $middleware){
+    public function registerMiddleware(Middleware $middleware)
+    {
         $this->middlewares[] = $middleware;
     }
 }
