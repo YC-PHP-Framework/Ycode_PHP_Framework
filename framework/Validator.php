@@ -83,7 +83,6 @@ class Validator
     {
         foreach ($this->validatedFileds as $key => $fields) {
            
-
             foreach ($fields as $field) {
                 if (is_array($field)) {
                     foreach ($field as $fieldKey => $val) {

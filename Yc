@@ -7,7 +7,6 @@ use function DI\create;
 use Doctrine\ORM\ORMSetup;
 use Yc\framework\Configure;
 
-use Yc\framework\Container;
 use Doctrine\ORM\EntityManager;
 use DI\Container as DIContainer;
 use Doctrine\Migrations\Configuration\EntityManager\ExistingEntityManager;
@@ -30,6 +29,7 @@ use Doctrine\Migrations\Tools\Console\Command\DumpSchemaCommand;
 use Doctrine\Migrations\Tools\Console\Command\SyncMetadataCommand;
 use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
 use Symfony\Component\Console\Application;
+use Yc\framework\Container;
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
@@ -44,7 +44,7 @@ $container->set(EntityManager::class, fn (Configure $config) => EntityManager::c
 
 $entityManager = $container->get(EntityManager::class);
 
-$config = new PhpFile(__DIR__ . '/config/migrations.php'); 
+$config = new PhpFile(__DIR__ . '/config/migrations.php');
 $dependencyFactory =  DependencyFactory::fromEntityManager($config, new ExistingEntityManager($entityManager));
 
 $commands = [
@@ -65,7 +65,7 @@ $commands = [
 
 
 
-$application = new Application(" Yc framework", "1.0 (BETA)");
+$application = new Application(" Yc framework", "1.0 (BETA)  Created BY Abdelmalek Achkif");
 ConsoleRunner::addCommands($application,  new SingleManagerProvider($entityManager));
 $application->addCommands($commands);
 $application->run();

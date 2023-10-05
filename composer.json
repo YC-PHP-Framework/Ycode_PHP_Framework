@@ -21,5 +21,6 @@
         "php-di/php-di": "^7.0",
         "symfony/cache": "^6.3",
         "symfony/console": "^6.3"
+      
     }
 }

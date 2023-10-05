@@ -7,7 +7,7 @@ use Yc\app\Http\Controller\NavigatorController;
 // #Note : 
 // If you call any Route::method outside of the routes/web.php file it is not going to work .
 
-Router::get('/', [NavigatorController::class, 'index'], ["guest", "auth"]);
+Router::get('/', [NavigatorController::class, 'index']);
 Router::get('/login', [NavigatorController::class, 'login']);
 Router::post('/login', [AuthController::class, 'login']);
 Router::get('/register', [NavigatorController::class, 'register']);

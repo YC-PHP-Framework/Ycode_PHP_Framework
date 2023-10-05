@@ -13,5 +13,6 @@ interface StoreInterface
      *
      * @return string
      */
+
     public function read();
 }
